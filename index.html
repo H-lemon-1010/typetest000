@@ -23,17 +23,18 @@
 <h1>좋아하는 선택으로 보는 성격 테스트</h1>
 
 <div id="quiz">
-  <div class="question" id="q1">
+  <div class="question" id="q1" style="display: block">
     <p>1. 쉬는 시간에 뭐하고 싶어?</p>
     <div class="options">
       <label><input type="radio" name="q1" value="A"> 밖에서 뛰어 놀기</label>
       <label><input type="radio" name="q1" value="B"> 혼자 조용히 쉬기</label>
       <label><input type="radio" name="q1" value="C"> 주위를 둘러보고 놀 친구 찾기</label>
       <label><input type="radio" name="q1" value="D"> 교실 안을 둘러보기</label>
+      <button onclick="nextQuestion()">다음</button>
     </div>
   </div>
 
-  <div class="question" id="q2" style="display:none">
+  <div class="question" id="q2" style="display: none/block">
     <p>2. 새 친구를 만나면?</p>
     <div class="options">
       <label><input type="radio" name="q2" value="A"> 먼저 다가가서 인사한다</label>
