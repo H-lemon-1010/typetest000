@@ -31,7 +31,7 @@
       <label><input type="radio" name="q1" value="C"> 주위를 둘러보고 놀 친구 찾기</label>
       <label><input type="radio" name="q1" value="D"> 교실 안을 둘러보기</label>
     </div>
-    <button onclick="nextQuestion(1)">다음</button>
+    <button onclick="nextQuestion()">다음</button>
   </div>
 
   <div class="question" id="q2" style="display:none">
@@ -42,7 +42,7 @@
       <label><input type="radio" name="q2" value="C"> 같이 놀자고 한다</label>
       <label><input type="radio" name="q2" value="D"> 조용히 웃고 있는다</label>
     </div>
-    <button onclick="nextQuestion(2)">다음</button>
+    <button onclick="nextQuestion()">다음</button>
   </div>
 
   <div class="question" id="q3" style="display:none">
@@ -53,7 +53,7 @@
       <label><input type="radio" name="q3" value="C"> 재미있게 한다</label>
       <label><input type="radio" name="q3" value="D"> 계획 세워서 한다</label>
     </div>
-    <button onclick="nextQuestion(3)">다음</button>
+    <button onclick="nextQuestion()">다음</button>
   </div>
 
   <div class="question" id="q4" style="display:none">
@@ -64,7 +64,7 @@
       <label><input type="radio" name="q4" value="C"> 가서 재미있는 얘기를 해준다</label>
       <label><input type="radio" name="q4" value="D"> 차분히 상황을 설명해준다</label>
     </div>
-    <button onclick="nextQuestion(4)">다음</button>
+    <button onclick="nextQuestion()">다음</button>
   </div>
 
   <div class="question" id="q5" style="display:none">
@@ -75,23 +75,28 @@
       <label><input type="radio" name="q5" value="C"> 노랑</label>
       <label><input type="radio" name="q5" value="D"> 초록</label>
     </div>
-    <button onclick="calculateResult()">결과 보기</button>
+    <button onclick="nextQuestion()">결과 보기</button>
   </div>
+
 </div>
 
 <div id="result" style="display:none"></div>
 
 <script>
-function nextQuestion(current) {
-  document.getElementById('q' + current).style.display = 'none';
-  const next = current + 1;
-  const nextDiv = document.getElementById('q' + next);
-  if (nextDiv) {
-    nextDiv.style.display = 'block';
+let currentQuestion = 1;
+const totalQuestions = 5;
+
+function nextQuestion() {
+  document.getElementById('q' + currentQuestion).style.display = 'none';
+  currentQuestion++;
+  if (currentQuestion <= totalQuestions) {
+    document.getElementById('q' + currentQuestion).style.display = 'block';
+  } else {
+    showResult();
   }
 }
 
-function calculateResult() {
+function showResult() {
   const answers = ['q1','q2','q3','q4','q5'];
   const score = {A:0,B:0,C:0,D:0};
 
@@ -100,31 +105,29 @@ function calculateResult() {
     if (checked) score[checked.value]++;
   });
 
-  // 가장 많이 선택된 값 찾기
   let max = 0;
   let type = '';
   for (let key in score) {
     if (score[key] > max) { max = score[key]; type = key; }
   }
 
-  // 결과 문구
   let resultText = '';
   if(type==='A') resultText = "🐶강아지형: 활동적이고 적극적이에요!";
   if(type==='B') resultText = "🐱고양이형: 독립적이고 관찰력이 뛰어나요!";
   if(type==='C') resultText = "🐰토끼형: 사교적이고 즐거움을 좋아해요!";
   if(type==='D') resultText = "🐘코끼리형: 침착하고 생각이 깊어요!";
 
-  document.getElementById('result').innerHTML = resultText + '<br><button onclick="resetQuiz()">다시하기</button>';
+  const resultDiv = document.getElementById('result');
+  resultDiv.innerHTML = resultText + '<br><button onclick="resetQuiz()">다시하기</button>';
+  resultDiv.style.display = 'block';
 }
 
 function resetQuiz() {
-  const radios = document.querySelectorAll('input[type=radio]');
-  radios.forEach(r => r.checked = false);
-  document.getElementById('result').innerHTML = '';
-  // 처음 질문으로 돌아가기
-   for (let i = 1; i <= 5; i++) {
-    document.getElementById('q'+i).style.display = (i===1 ? 'block' : 'none');
-  }
+  currentQuestion = 1;
+  document.querySelectorAll('.question').forEach(q => q.style.display='none');
+  document.getElementById('q1').style.display='block';
+  document.getElementById('result').style.display='none';
+  document.querySelectorAll('input[type=radio]').forEach(r => r.checked=false);
 }
 </script>
 
