@@ -7,6 +7,30 @@
 <meta charset="UTF-8">
 <title>성격 테스트 - 좋아하는 동물</title>
 <style>
+  body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+  background: #fdf6e3;
+  font-size: 1.2em; /* 기본 폰트 키움 */
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 1.6em; /* 모바일 화면에서는 글씨 크게 */
+    margin: 10px;
+  }
+
+  button {
+    padding: 15px 25px; /* 버튼 터치하기 쉽게 */
+    font-size: 1.2em;
+  }
+
+  .options label {
+    font-size: 1.2em;
+    padding: 10px;
+  }
+}
   body { font-family: Arial, sans-serif; text-align: center; margin: 20px; background: #fdf6e3; }
   h1 { color: #2a7ae2; }
   .question { margin-bottom: 20px; }
