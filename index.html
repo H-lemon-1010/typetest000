@@ -8,38 +8,49 @@
 <title>성격 테스트 - 좋아하는 동물</title>
 <style>
   body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 20px;
-  background: #fdf6e3;
-  font-size: 1.2em; /* 기본 폰트 키움 */
-}
-
-@media (max-width: 600px) {
-  body {
-    font-size: 1.6em; /* 모바일 화면에서는 글씨 크게 */
-    margin: 10px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background: #fdf6e3;
+    font-size: 1.2em; /* 기본 폰트 크기 */
   }
 
-  button {
-    padding: 15px 25px; /* 버튼 터치하기 쉽게 */
-    font-size: 1.2em;
-  }
-
-  .options label {
-    font-size: 1.2em;
-    padding: 10px;
-  }
-}
-  body { font-family: Arial, sans-serif; text-align: center; margin: 20px; background: #fdf6e3; }
   h1 { color: #2a7ae2; }
   .question { margin-bottom: 20px; }
   .options label { display: block; margin: 5px 0; cursor: pointer; transition: background 0.3s; padding: 5px; border-radius: 5px; }
   .options label:hover { background-color: #cce4ff; }
   input[type=radio] { margin-right: 10px; }
   #result { font-size: 1.5em; margin-top: 20px; color: #2a7ae2; }
-  button { margin-top: 20px; padding: 10px 20px; font-size: 1em; border: none; border-radius: 5px; cursor: pointer; background-color: #2a7ae2; color: white; transition: background 0.3s; }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #2a7ae2;
+    color: white;
+    transition: background 0.3s;
+  }
   button:hover { background-color: #145da0; }
+
+  /* 모바일 대응 */
+  @media (max-width: 600px) {
+    body {
+      font-size: 1.6em !important; /* 모바일에서 글씨 키움 */
+      margin: 10px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 1.2em;
+    }
+
+    .options label {
+      font-size: 1.2em;
+      padding: 10px;
+    }
+  }
 </style>
 </head>
 <body>
