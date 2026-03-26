@@ -30,7 +30,6 @@
       <label><input type="radio" name="q1" value="B"> 혼자 조용히 쉬기</label>
       <label><input type="radio" name="q1" value="C"> 주위를 둘러보고 놀 친구 찾기</label>
       <label><input type="radio" name="q1" value="D"> 교실 안을 둘러보기</label>
-      <button onclick="nextQuestion()">다음</button>
     </div>
     <button onclick="nextQuestion(1)">다음</button>
   </div>
@@ -43,7 +42,7 @@
       <label><input type="radio" name="q2" value="C"> 같이 놀자고 한다</label>
       <label><input type="radio" name="q2" value="D"> 조용히 웃고 있는다</label>
     </div>
-    <button onclick="nextQuestion(1)">다음</button>
+    <button onclick="nextQuestion(2)">다음</button>
   </div>
 
   <div class="question" id="q3" style="display:none">
@@ -54,10 +53,10 @@
       <label><input type="radio" name="q3" value="C"> 재미있게 한다</label>
       <label><input type="radio" name="q3" value="D"> 계획 세워서 한다</label>
     </div>
-    <button onclick="nextQuestion(1)">다음</button>
+    <button onclick="nextQuestion(3)">다음</button>
   </div>
 
-   <div class="question" id="q4" style="display:none">
+  <div class="question" id="q4" style="display:none">
     <p>4. 친구가 화났을 때?</p>
     <div class="options">
       <label><input type="radio" name="q4" value="A"> 다가가 위로한다</label>
@@ -65,7 +64,7 @@
       <label><input type="radio" name="q4" value="C"> 가서 재미있는 얘기를 해준다</label>
       <label><input type="radio" name="q4" value="D"> 차분히 상황을 설명해준다</label>
     </div>
-    <button onclick="nextQuestion(1)">다음</button>
+    <button onclick="nextQuestion(4)">다음</button>
   </div>
 
   <div class="question" id="q5" style="display:none">
@@ -75,15 +74,23 @@
       <label><input type="radio" name="q5" value="B"> 파랑</label>
       <label><input type="radio" name="q5" value="C"> 노랑</label>
       <label><input type="radio" name="q5" value="D"> 초록</label>
-    </div><button onclick="nextQuestion(1)">다음</button>
+    </div>
+    <button onclick="calculateResult()">결과 보기</button>
   </div>
- <div style="display:none">
-  <button onclick="calculateResult()">결과 보기</button>
 </div>
 
 <div id="result"></div>
 
 <script>
+function nextQuestion(current) {
+  document.getElementById('q' + current).style.display = 'none';
+  const next = current + 1;
+  const nextDiv = document.getElementById('q' + next);
+  if (nextDiv) {
+    nextDiv.style.display = 'block';
+  }
+}
+
 function calculateResult() {
   const answers = ['q1','q2','q3','q4','q5'];
   const score = {A:0,B:0,C:0,D:0};
@@ -114,6 +121,10 @@ function resetQuiz() {
   const radios = document.querySelectorAll('input[type=radio]');
   radios.forEach(r => r.checked = false);
   document.getElementById('result').innerHTML = '';
+  // 처음 질문으로 돌아가기
+   for (let i = 1; i <= 5; i++) {
+    document.getElementById('q'+i).style.display = (i===1 ? 'block' : 'none');
+  }
 }
 </script>
 
