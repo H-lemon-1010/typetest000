@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<meta property="og:title" content="나는 어떤 동물일까?">
+<meta property="og:description" content="선택만으로 나의 성격 유형을 알아보자!">
+<meta property="og:image" content="https://github.com/H-lemon-1010/typetest000/raw/main/thumb.jpg">
 <meta charset="UTF-8">
 <title>성격 테스트 - 좋아하는 동물</title>
 <style>
-  body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+  body { font-family: Arial, sans-serif; text-align: center; margin: 20px; background: #fdf6e3; }
+  h1 { color: #2a7ae2; }
   .question { margin-bottom: 20px; }
-  .options label { display: block; margin: 5px 0; }
+  .options label { display: block; margin: 5px 0; cursor: pointer; transition: background 0.3s; padding: 5px; border-radius: 5px; }
+  .options label:hover { background-color: #cce4ff; }
+  input[type=radio] { margin-right: 10px; }
   #result { font-size: 1.5em; margin-top: 20px; color: #2a7ae2; }
-  button { margin-top: 20px; padding: 10px 20px; font-size: 1em; }
+  button { margin-top: 20px; padding: 10px 20px; font-size: 1em; border: none; border-radius: 5px; cursor: pointer; background-color: #2a7ae2; color: white; transition: background 0.3s; }
+  button:hover { background-color: #145da0; }
 </style>
 </head>
 <body>
@@ -90,10 +97,10 @@ function calculateResult() {
 
   // 결과 문구
   let resultText = '';
-  if(type==='A') resultText = "강아지형: 활동적이고 적극적이에요!";
-  if(type==='B') resultText = "고양이형: 독립적이고 관찰력이 뛰어나요!";
-  if(type==='C') resultText = "토끼형: 사교적이고 즐거움을 좋아해요!";
-  if(type==='D') resultText = "코끼리형: 침착하고 생각이 깊어요!";
+  if(type==='A') resultText = "🐶강아지형: 활동적이고 적극적이에요!";
+  if(type==='B') resultText = "🐱고양이형: 독립적이고 관찰력이 뛰어나요!";
+  if(type==='C') resultText = "🐰토끼형: 사교적이고 즐거움을 좋아해요!";
+  if(type==='D') resultText = "🐘코끼리형: 침착하고 생각이 깊어요!";
 
   document.getElementById('result').innerHTML = resultText + '<br><button onclick="resetQuiz()">다시하기</button>';
 }
