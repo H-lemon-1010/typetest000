@@ -164,6 +164,19 @@ function resetQuiz() {
   document.getElementById('result').style.display='none';
   document.querySelectorAll('input[type=radio]').forEach(r => r.checked=false);
 }
+  // ===== 여기서부터 화면 크기 대응 JS =====
+function adjustFont() {
+  const width = window.innerWidth;
+  const body = document.body;
+  if (width <= 600) {
+    body.style.fontSize = '20px';  // 모바일에서 글씨 크게
+  } else {
+    body.style.fontSize = '18px';  // PC에서 기본
+  }
+}
+
+window.addEventListener('load', adjustFont);
+window.addEventListener('resize', adjustFont);
 </script>
 
 </body>
